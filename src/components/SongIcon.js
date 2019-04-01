@@ -5,15 +5,19 @@ class SongIcon extends Component {
     return (
       <div className="song-icon_container">
         <div className="song-icon_icon">
-          <div className="song-icon_icon-header">
+          <div className="song-icon_icon-header" onClick={() => this.props.addToWinnerArrSongOne()}>
             <span>{this.props.song1.title}</span>
           </div>
-          <div className="song-icon_icon-lyrics">
-            
+          <div className="song-icon_icon song-icon_icon-special">
+            <div className="song-icon_icon-header song-icon_icon-header_special">
+              <span>Both</span>
+            </div>
+            <div className="song-icon_icon-header song-icon_icon-header_special">
+              <span>No Opinion</span>
+            </div>
           </div>
-          <div className="song-icon_icon-vote">
-            <i class="song-icon_icon-vote-up far fa-thumbs-up fa-3x"></i>
-            <i class="song-icon_icon-vote-down far fa-thumbs-down fa-3x"></i>
+          <div className="song-icon_icon-header" onClick={this.props.addToWinnerArrSongTwo}>
+            <span>{this.props.song2.title}</span>
           </div>
         </div>
       </div>

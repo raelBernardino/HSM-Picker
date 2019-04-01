@@ -8,6 +8,16 @@ html, body {
   height: 100vh;
   background-color: whitesmoke;
 }
+.main-header {
+  position: absolute;
+  top: 50px;
+  height: auto;
+  width: 100%;
+  font-family: 'Roboto';
+  font-size: 50px;
+  text-align: center;
+  font-weight: 100;
+}
 
 .song-icon {
   &_container {
@@ -18,47 +28,45 @@ html, body {
     height: 100%;
   }
   &_icon {
-    width: 350px;
-    height: 500px;
-    border-radius: 7px;
-    background-color: white;
-    &-header {
-      width: 100%;
-      height: auto;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      padding-left: 10px;
-      padding-right: 10px;
-      border-radius: 7px 7px 0 0;
-      box-sizing: border-box;
-      background-color: rgb(255, 104, 104);
-      font-family: 'Roboto';
-      font-weight: 900;
-      font-size: 40px
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    &-special {
+      margin: 0;
+      width: auto;
+      flex-direction: column;
+      align-items: space-evenly;
     }
-    &-vote {
-      width: 100%;
-      height: auto;
-      padding: 25px;
-      box-sizing: border-box;
+    &-header {
+      width: 400px;
+      height: 300px;
+      padding: 30px;
       display: flex;
+      text-align: center;
       justify-content: center;
       align-items: center;
-      justify-content: space-around;
-      &-up {
-        color: #333;
+      box-sizing: border-box;
+      font-family: 'Roboto';
+      font-weight: 100;
+      font-size: 40px;
+      transition: .3s;
+      &:hover {
+        background-color: rgb(41, 255, 130);
+        color: white;
+        font-weight: 300;
+        width: 400px;
+        height: 300px;
         transition: .3s;
-        &:hover {
-          color: rgb(255, 104, 104);
-          transition: .3s;
-        }
+        cursor: pointer;
       }
-      &-down {
-        color: #333;
-        transition: .3s;
+      &:active {
+      background-color: rgb(84, 31, 255);
+      }
+      &_special {
+        height: auto;
         &:hover {
-          color: rgb(255, 104, 104);
-          transition: .3s;
+          height: auto;
         }
       }
     }
