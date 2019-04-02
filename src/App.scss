@@ -10,7 +10,7 @@ html, body {
 }
 .main-header {
   position: absolute;
-  top: 50px;
+  top: 70px;
   height: auto;
   width: 100%;
   font-family: 'Roboto';
@@ -39,6 +39,12 @@ html, body {
       align-items: space-evenly;
     }
     &-header {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       width: 400px;
       height: 300px;
       padding: 30px;
