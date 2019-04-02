@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.scss'
 import SongIcon from './components/SongIcon'
+const uuidv1 = require('uuid/v1')
 
 class App extends Component {
   constructor(props) {
@@ -8,104 +9,114 @@ class App extends Component {
     this.state = {
       songArray: [
         {
-          title: 'Start of Something New'
+          title: 'Start of Something New',
+          points: 0,
+          id: uuidv1()
         },
         {
-          title: 'Get\'cha Head In the Game'
+          title: 'Get\'cha Head In the Game',
+          points: 0,
+          id: uuidv1()
         },
         {
-          title: 'What I\'ve Been Looking For'
+          title: 'What I\'ve Been Looking For',
+          points: 0,
+          id: uuidv1()
         },
         {
-          title: 'Stick to the Status Quo'
+          title: 'Stick to the Status Quo',
+          points: 0,
+          id: uuidv1()
         },
         {
-          title: 'When There Was Me and You'
+          title: 'When There Was Me and You',
+          points: 0,
+          id: uuidv1()
         },
         {
-          title: 'Bop to the Top'
+          title: 'Bop to the Top',
+          points: 0,
+          id: uuidv1()
         },
         {
-          title: 'Breaking Free'
+          title: 'Breaking Free',
+          points: 0,
+          id: uuidv1()
         },
         {
-          title: 'We\'re All in This Together'
+          title: 'We\'re All in This Together',
+          points: 0,
+          id: uuidv1()
         },
         {
-          title: 'I Can\'t Take My Eyes Off of You'
+          title: 'I Can\'t Take My Eyes Off of You',
+          points: 0,
+          id: uuidv1()
         }
       ],
-      winnerArray: [],
-      loserArry: [],
       song1: {
-        title: ''
+        title: '',
+        points: 0,
       },
       song2: {
-        title: ''
-      }
+        title: '',
+        points: 0
+      },
+      currentIndex: 0,
+      indexCounter: 0,
+      done: false
     }
-    this._pickTwoSongs = this._pickTwoSongs.bind(this)
-    this._addToWinnerArrSongOne = this._addToWinnerArrSongOne.bind(this)
-    this._addToWinnerArrSongTwo = this._addToWinnerArrSongTwo.bind(this)
+    this._displaySongs = this._displaySongs.bind(this)
+    this._addPoint = this._addPoint.bind(this)
   }
 
   componentDidMount() {
-    this._pickTwoSongs()
+    this._displaySongs()
   }
 
-  _pickTwoSongs() {
+  _displaySongs() {
     const songArray = this.state.songArray
-    const firstIndex = 0
-    const lastIndex = songArray.length - 1
+    let currentIndex = this.state.currentIndex
+    let indexCounter = this.state.indexCounter + 1
+    let done = this.state.done
+    if (indexCounter === songArray.length) {
+      currentIndex = currentIndex + 1
+      indexCounter = currentIndex + 1
+    }
     this.setState(prevState => ({
       song1: {
         ...prevState.song1,
-        title: songArray[firstIndex].title
+        title: songArray[currentIndex].title,
+        id: songArray[currentIndex].id
       },
       song2: {
         ...prevState.song2,
-        title: songArray[lastIndex].title
-      }
+        title: songArray[indexCounter].title,
+        id: songArray[indexCounter].id
+      },
+      indexCounter,
+      currentIndex,
+      done
     }))
-    console.log(this.state.songArray)
-    console.log(this.state.winnerArray)
-    console.log(this.state.loserArry)
   }
 
-  _addToWinnerArrSongOne() {
-    const winnerSong = this.state.song1
-    const loserSong = this.state.song2
-    const loserArray = this.state.loserArry
-    const winnerArray = this.state.winnerArray
-    winnerArray.push(winnerSong)
-    loserArray.push(loserSong)
+  _addPoint(winId, loseId) {
     const songArray = this.state.songArray
-    songArray.shift()
-    songArray.pop()
-    this.setState({
-      songArray,
-      winnerArray,
-      loserArray
-    })
-    this._pickTwoSongs()
-  }
-
-  _addToWinnerArrSongTwo() {
-    const winnerSong = this.state.song2
-    const winnerArray = this.state.winnerArray
-    const loserSong = this.state.song1
-    const loserArray = this.state.loserArry
-    winnerArray.push(winnerSong)
-    loserArray.push(loserSong)
-    const songArray = this.state.songArray
-    songArray.shift()
-    songArray.pop()
-    this.setState({
-      songArray,
-      winnerArray,
-      loserArray
-    })
-    this._pickTwoSongs()
+      .map(song => {
+        let updatedPoints = song.points
+        if (song.id === winId) {
+          updatedPoints++
+        } else if (song.id === loseId) {
+          updatedPoints--
+        }
+        return {
+          ...song,
+          points: updatedPoints
+        }
+      })
+    this.setState({ songArray })
+    console.log(this.state.currentIndex)
+    this._displaySongs()
   }
 
   render() {
@@ -118,8 +129,8 @@ class App extends Component {
           song1={this.state.song1}
           song2={this.state.song2}
           songArray={this.state.songArray}
-          addToWinnerArrSongOne={this._addToWinnerArrSongOne}
-          addToWinnerArrSongTwo={this._addToWinnerArrSongTwo}
+          displaySongs={this._displaySongs}
+          addPoint={this._addPoint}
         />
       </div>
     );
