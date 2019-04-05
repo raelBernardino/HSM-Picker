@@ -104,7 +104,7 @@ class App extends Component {
       currentIndex: 0,
       indexCounter: 0,
       finishCounter: 0,
-      completed: false
+      completed: true
     }
     this._displaySongs = this._displaySongs.bind(this)
     this._addPoint = this._addPoint.bind(this)
