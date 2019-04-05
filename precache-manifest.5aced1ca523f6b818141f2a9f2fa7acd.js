@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/HSM-Picker/static/css/main.70aa6f01.chunk.css"
   },
   {
-    "revision": "3d0b68f1590da71d703aeeb9a36eda3a",
+    "revision": "4e2964b620ba96b03d83191e413f4d08",
     "url": "/HSM-Picker/index.html"
   }
 ];
