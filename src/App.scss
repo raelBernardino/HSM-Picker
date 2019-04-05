@@ -32,18 +32,6 @@ html, body {
 .song-icon {
   &_container {
     @include fill-page-flex();
-    p {
-      top: 150px;
-      left: 0;
-      text-align: center;
-      position: absolute;
-      color: #333;
-      font-weight: 400;
-      font-size: 18px;
-      margin-right: 20%;
-      margin-left: 20%;
-      margin-top: 30px;
-    }
   }
   &_icon {
     width: 100%;
