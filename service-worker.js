@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/HSM-Picker/precache-manifest.1ab267c1c955fe4158e845456e14df27.js"
+  "/HSM-Picker/precache-manifest.f09f0ef96683149a0e1829aefcbdf7cb.js"
 );
 
 workbox.clientsClaim();
